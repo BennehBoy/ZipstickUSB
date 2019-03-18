@@ -6,7 +6,10 @@ const uint32 leftSwitch = PA7;
 const uint32 rightSwitch = PA6;
 const uint32 upSwitch = PA5;
 const uint32 downSwitch = PA4;
-const uint32 fireSwitch = PA3;
+const uint32 fireSwitch = PA3; //retropie A
+const uint32 bSwitch = PB0; //retropie B
+const uint32 startSwitch = PB1; //retropie B
+const uint32 selectSwitch = PB2; //retropie B
 const bool switchActive = 1; // 1 if microswitch is connected to VCC and pulled down
 
 USBHID HID;
@@ -20,6 +23,9 @@ void setup()
     pinMode(PA5, INPUT_PULLDOWN);
     pinMode(PA4, INPUT_PULLDOWN);
     pinMode(PA3, INPUT_PULLDOWN);
+    pinMode(PB0, INPUT_PULLDOWN);
+    pinMode(PB1, INPUT_PULLDOWN);
+    pinMode(PB2, INPUT_PULLDOWN);
     USBComposite.setVendorId(0x040B);
     USBComposite.setProductId(0x6533);
     USBComposite.setProductString("Speed-Link Competition Pro");
@@ -39,5 +45,11 @@ void loop()
  else Joystick.Y(512);
  if (digitalRead(fireSwitch) == switchActive) Joystick.button(1,true);
  else Joystick.button(1,false);
+ if (digitalRead(bSwitch) == switchActive) Joystick.button(2,true);
+ else Joystick.button(2,false);
+ if (digitalRead(startSwitch) == switchActive) Joystick.button(3,true);
+ else Joystick.button(3,false);
+ if (digitalRead(selectSwitch) == switchActive) Joystick.button(4,true);
+ else Joystick.button(4,false);
  Joystick.send();
 }

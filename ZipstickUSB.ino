@@ -8,8 +8,8 @@ const uint32 upSwitch = PA5;
 const uint32 downSwitch = PA4;
 const uint32 fireSwitch = PA3; //retropie A
 const uint32 bSwitch = PB0; //retropie B
-const uint32 startSwitch = PB1; //retropie B
-const uint32 selectSwitch = PB2; //retropie B
+const uint32 startSwitch = PB1; //retropie Start
+const uint32 selectSwitch = PB2; //retropie Select
 const bool switchActive = 1; // 1 if microswitch is connected to VCC and pulled down
 
 USBHID HID;
